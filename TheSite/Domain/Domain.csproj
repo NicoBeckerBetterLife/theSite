@@ -49,6 +49,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IExpenditure.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -59,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DI\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

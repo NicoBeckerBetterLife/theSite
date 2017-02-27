@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.interfaces;
 
 namespace Domain.Services
 {
-    public class Expenditure
+    public class Expenditure : IExpenditure
     {
         public void CreateNewExpenditure(Expenditure expenditure)
         {

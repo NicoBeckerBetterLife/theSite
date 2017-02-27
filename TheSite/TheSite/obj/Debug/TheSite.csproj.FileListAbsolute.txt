@@ -96,3 +96,5 @@ C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\TheSite\bi
 C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\TheSite\bin\Microsoft.Practices.Unity.xml
 C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\TheSite\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\TheSite\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\TheSite\bin\Domain.dll
+C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\TheSite\bin\Domain.pdb
