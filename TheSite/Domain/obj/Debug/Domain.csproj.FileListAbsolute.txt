@@ -3,3 +3,4 @@ C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\Domain\bin
 C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\Domain\obj\Debug\Domain.dll
 C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\Domain\obj\Debug\Domain.pdb
+C:\Users\Nico.Becker\Documents\GitHub\Mystuff\TheSite\theSite\TheSite\Domain\bin\Debug\Domain.dll.config
