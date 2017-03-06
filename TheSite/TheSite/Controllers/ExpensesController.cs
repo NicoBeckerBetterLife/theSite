@@ -23,15 +23,24 @@ namespace TheSite.Controllers
         [HttpGet]
         public ActionResult Edit(int id = 0)
         {
-            
-           
+            var model = new ExpenditureModel();
+            if (id > 0)
+            {
+                model = Expenditure.GetExpenditureById(id);
+            }
+
             ViewBag.parishUsers = GetParishUsersSelectList(0);
             ViewBag.expenseTypes = GetExpenseTypesSelectList(0);
-            return View();
+            return View(model);
         }
         [HttpPost]
         public ActionResult Edit(ExpenditureModel model)
         {
+            if (ModelState.IsValid)
+            {
+                Expenditure.UpdateExpenditure(model);
+               return RedirectToAction("Index");
+            }
             ViewBag.parishUsers = GetParishUsersSelectList(0);
             ViewBag.expenseTypes = GetExpenseTypesSelectList(0);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -26,13 +27,28 @@ namespace Domain.Services
 
             DB = new ArchdioceseEntities();
         }
-        public void CreateNewExpenditure(ExpenditureModel expenditureService)
+        public void CreateNewExpenditure(ExpenditureModel expenditure)
         {
+           
+
 
         }
-        public void UpdateExpenditure(ExpenditureModel expenditureService)
+        public void UpdateExpenditure(ExpenditureModel expenditure)
         {
+            var model = mapper.Map<ExpenditureModel, Expens>(expenditure);
 
+            if (model.ID > 0)
+            {
+                DB.Expenses.Attach(model);
+                var entry = DB.Entry(model);
+                entry.State = EntityState.Modified;
+                DB.SaveChanges();
+            }
+            else
+            {
+                DB.Expenses.Add(model);
+                DB.SaveChanges();
+            }
         }
         public void removeExpenditure()
         {
@@ -42,9 +58,7 @@ namespace Domain.Services
         public ExpenditureModel GetExpenditureById(int id)
         {
             var items = DB.Expenses.SingleOrDefault(x => x.ID == id);
-
-
-            return new ExpenditureModel();
+            return mapper.Map<Expens, ExpenditureModel>(items);
         }
 
         public List<ExpenditureModel> GetExpenditureByparishUserId(int id)
