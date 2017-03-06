@@ -30,8 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,9 +55,98 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddressType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArchdioceseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArchdioceseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArchdioceseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArchdioceseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArchdioceseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
+    <Compile Include="AutoMapper\ExpencesMappingProfile.cs" />
+    <Compile Include="ChurchGroup.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Collection.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CollectionType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAddress.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailAddressType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Expens.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gender.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Income.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IncomeType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaritalStatus.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpenceTypeModel.cs" />
     <Compile Include="Models\ExpenditureModel.cs" />
-    <Compile Include="Services\Expenditure.cs" />
+    <Compile Include="Models\ParishUserModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Parish.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParishType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParishUser.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ExpenditureService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -50,9 +154,89 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IExpenditure.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TelephoneNumber.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TelephoneNumberType.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Title.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroup.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetAddressTypes_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetChurchGroups_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetCollections_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetCollectionTypes_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetEmailAddressTypes_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetGenders_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetMaritalStatuses_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetParishesByUserID_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetParishes_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetParishTypes_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetParishUsers_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetPersons_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetPersonTypes_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetTelephoneNumberTypes_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetTitles_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetUserGroups_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetUsers_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_VerifyUsernameAndPassword_Result.cs">
+      <DependentUpon>ArchdioceseModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="ArchdioceseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ArchdioceseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ArchdioceseModel.edmx.diagram">
+      <DependentUpon>ArchdioceseModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -60,6 +244,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ArchdioceseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArchdioceseModel.Context.cs</LastGenOutput>
+      <DependentUpon>ArchdioceseModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="ArchdioceseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArchdioceseModel.edmx</DependentUpon>
+      <LastGenOutput>ArchdioceseModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

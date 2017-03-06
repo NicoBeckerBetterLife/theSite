@@ -1,0 +1,3051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ArchdioceseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="entityID" />
+            <PropertyRef Name="addressTypeID" />
+          </Key>
+          <Property Name="entityID" Type="int" Nullable="false" />
+          <Property Name="addressTypeID" Type="int" Nullable="false" />
+          <Property Name="addressLine1" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="addressLine2" Type="varchar" MaxLength="32" />
+          <Property Name="addressLine3" Type="varchar" MaxLength="32" />
+          <Property Name="suburb" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AddressTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Archdiocese.dbo.ChurchGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChurchGroups">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="isDeleted" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Collections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parishUserID" Type="int" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="collectionTypeID" Type="int" Nullable="false" />
+          <Property Name="collectionDateTime" Type="datetime" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollectionTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="collectionTypeDescription" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailAddresses">
+          <Key>
+            <PropertyRef Name="entityID" />
+            <PropertyRef Name="emailAddressTypeID" />
+          </Key>
+          <Property Name="entityID" Type="int" Nullable="false" />
+          <Property Name="emailAddressTypeID" Type="int" Nullable="false" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="isDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailAddressTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expenses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parishUserID" Type="int" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="expenseTypeID" Type="int" Nullable="false" />
+          <Property Name="expenseDate" Type="datetime" Nullable="false" />
+          <Property Name="dateSubmitted" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpenseTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incomes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parishUserID" Type="int" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="incomeTypeID" Type="int" Nullable="false" />
+          <Property Name="incomeDate" Type="datetime" Nullable="false" />
+          <Property Name="dateSubmitted" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IncomeTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaritalStatuses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parishes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parishName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="parishTypeID" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParishTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parishTypeDescription" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParishUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parishID" Type="int" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titleID" Type="int" Nullable="false" />
+          <Property Name="personTypeID" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="dateOfBirth" Type="date" Nullable="false" />
+          <Property Name="genderID" Type="int" Nullable="false" />
+          <Property Name="maritalStatusID" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TelephoneNumbers">
+          <Key>
+            <PropertyRef Name="entityID" />
+            <PropertyRef Name="telephoneNumberTypeID" />
+          </Key>
+          <Property Name="entityID" Type="int" Nullable="false" />
+          <Property Name="telephoneNumberTypeID" Type="int" Nullable="false" />
+          <Property Name="telephoneNumber" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="isDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TelephoneNumberTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Titles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="abbreviation" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGroups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userGroupName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="permissionString" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="userGroupID" Type="int" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Addresses_AddressTypes">
+          <End Role="AddressTypes" Type="Self.AddressTypes" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="addressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Addresses_Parishes">
+          <End Role="Parishes" Type="Self.Parishes" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Addresses_Persons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collections_CollectionTypes">
+          <End Role="CollectionTypes" Type="Self.CollectionTypes" Multiplicity="1" />
+          <End Role="Collections" Type="Self.Collections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollectionTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Collections">
+              <PropertyRef Name="collectionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collections_ParishUsers">
+          <End Role="ParishUsers" Type="Self.ParishUsers" Multiplicity="1" />
+          <End Role="Collections" Type="Self.Collections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Collections">
+              <PropertyRef Name="parishUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailAddresses_EmailAddressTypes">
+          <End Role="EmailAddressTypes" Type="Self.EmailAddressTypes" Multiplicity="1" />
+          <End Role="EmailAddresses" Type="Self.EmailAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailAddressTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmailAddresses">
+              <PropertyRef Name="emailAddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailAddresses_Parishes">
+          <End Role="Parishes" Type="Self.Parishes" Multiplicity="1" />
+          <End Role="EmailAddresses" Type="Self.EmailAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmailAddresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailAddresses_Persons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="EmailAddresses" Type="Self.EmailAddresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmailAddresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_ExpenseTypes">
+          <End Role="ExpenseTypes" Type="Self.ExpenseTypes" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpenseTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="expenseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_ParishUsers">
+          <End Role="ParishUsers" Type="Self.ParishUsers" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="parishUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_IncomeTypes">
+          <End Role="IncomeTypes" Type="Self.IncomeTypes" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="incomeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ParishUsers">
+          <End Role="ParishUsers" Type="Self.ParishUsers" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="parishUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parishes_ParishTypes">
+          <End Role="ParishTypes" Type="Self.ParishTypes" Multiplicity="1" />
+          <End Role="Parishes" Type="Self.Parishes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Parishes">
+              <PropertyRef Name="parishTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParishUsers_Parishes">
+          <End Role="Parishes" Type="Self.Parishes" Multiplicity="1" />
+          <End Role="ParishUsers" Type="Self.ParishUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ParishUsers">
+              <PropertyRef Name="parishID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParishUsers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ParishUsers" Type="Self.ParishUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ParishUsers">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_MaritalStatuses">
+          <End Role="MaritalStatuses" Type="Self.MaritalStatuses" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaritalStatuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="maritalStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_PersonTypes">
+          <End Role="PersonTypes" Type="Self.PersonTypes" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="personTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_Titles">
+          <End Role="Titles" Type="Self.Titles" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TelephoneNumbers_Parishes">
+          <End Role="Parishes" Type="Self.Parishes" Multiplicity="1" />
+          <End Role="TelephoneNumbers" Type="Self.TelephoneNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TelephoneNumbers">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TelephoneNumbers_Persons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="TelephoneNumbers" Type="Self.TelephoneNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TelephoneNumbers">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TelephoneNumbers_TelephoneNumberTypes">
+          <End Role="TelephoneNumberTypes" Type="Self.TelephoneNumberTypes" Multiplicity="1" />
+          <End Role="TelephoneNumbers" Type="Self.TelephoneNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TelephoneNumberTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TelephoneNumbers">
+              <PropertyRef Name="telephoneNumberTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserGroups">
+          <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="userGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_DeleteAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="addressTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteChurchGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteCollections" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteCollectionTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteEmailAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="emailAddressTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteEmailAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteGenders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteMaritalStatuses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteParishes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteParishTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteParishUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeletePersons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeletePersonTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteTelephoneNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="telephoneNumberTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteTelephoneNumberTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteTitles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteUserGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DisableCollectionTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_EnableCollectionTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="addressTypeID" Type="int" Mode="In" />
+          <Parameter Name="addressLine1" Type="varchar" Mode="In" />
+          <Parameter Name="addressLine2" Type="varchar" Mode="In" />
+          <Parameter Name="addressLine3" Type="varchar" Mode="In" />
+          <Parameter Name="suburb" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetChurchGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetCollections" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishUserID" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="decimal" Mode="In" />
+          <Parameter Name="collectionTypeID" Type="int" Mode="In" />
+          <Parameter Name="collectionDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_GetCollectionTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="collectionTypeDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetEmailAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="emailAddressTypeID" Type="int" Mode="In" />
+          <Parameter Name="emailAddress" Type="varchar" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_GetEmailAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetGenders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetMaritalStatuses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetParishes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishName" Type="varchar" Mode="In" />
+          <Parameter Name="parishTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetParishesByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetParishTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishTypeDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetParishUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishID" Type="int" Mode="In" />
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetPersons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="titleID" Type="int" Mode="In" />
+          <Parameter Name="personTypeID" Type="int" Mode="In" />
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="surname" Type="varchar" Mode="In" />
+          <Parameter Name="dateOfBirth" Type="date" Mode="In" />
+          <Parameter Name="genderID" Type="int" Mode="In" />
+          <Parameter Name="maritalStatusID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetPersonTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetTelephoneNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="telephoneNumberTypeID" Type="int" Mode="In" />
+          <Parameter Name="telephoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_GetTelephoneNumberTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetTitles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="abbreviation" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetUserGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="userGroupName" Type="varchar" Mode="In" />
+          <Parameter Name="permissionString" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="userGroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="addressTypeID" Type="int" Mode="In" />
+          <Parameter Name="addressLine1" Type="varchar" Mode="In" />
+          <Parameter Name="addressLine2" Type="varchar" Mode="In" />
+          <Parameter Name="addressLine3" Type="varchar" Mode="In" />
+          <Parameter Name="suburb" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertChurchGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertCollections" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="parishUserID" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="decimal" Mode="In" />
+          <Parameter Name="collectionTypeID" Type="int" Mode="In" />
+          <Parameter Name="collectionDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertCollectionTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="collectionTypeDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertEmailAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="emailAddressTypeID" Type="int" Mode="In" />
+          <Parameter Name="emailAddress" Type="varchar" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertEmailAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertGenders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertMaritalStatuses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertParishes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="parishName" Type="varchar" Mode="In" />
+          <Parameter Name="parishTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertParishTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="parishTypeDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertParishUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="parishID" Type="int" Mode="In" />
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertPersons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="titleID" Type="int" Mode="In" />
+          <Parameter Name="personTypeID" Type="int" Mode="In" />
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="surname" Type="varchar" Mode="In" />
+          <Parameter Name="dateOfBirth" Type="date" Mode="In" />
+          <Parameter Name="genderID" Type="int" Mode="In" />
+          <Parameter Name="maritalStatusID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertPersonTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertTelephoneNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="telephoneNumberTypeID" Type="int" Mode="In" />
+          <Parameter Name="telephoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertTelephoneNumberTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertTitles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="abbreviation" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertUserGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="userGroupName" Type="varchar" Mode="In" />
+          <Parameter Name="permissionString" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="userGroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="addressTypeID" Type="int" Mode="In" />
+          <Parameter Name="addressLine1" Type="varchar" Mode="In" />
+          <Parameter Name="addressLine2" Type="varchar" Mode="In" />
+          <Parameter Name="addressLine3" Type="varchar" Mode="In" />
+          <Parameter Name="suburb" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateChurchGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateCollections" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishUserID" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="decimal" Mode="In" />
+          <Parameter Name="collectionTypeID" Type="int" Mode="In" />
+          <Parameter Name="collectionDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateCollectionTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="collectionTypeDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateEmailAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="emailAddressTypeID" Type="int" Mode="In" />
+          <Parameter Name="emailAddress" Type="varchar" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateEmailAddressTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateGenders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateMaritalStatuses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateParishes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishName" Type="varchar" Mode="In" />
+          <Parameter Name="parishTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateParishTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishTypeDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateParishUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="parishID" Type="int" Mode="In" />
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdatePersons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="titleID" Type="int" Mode="In" />
+          <Parameter Name="personTypeID" Type="int" Mode="In" />
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="surname" Type="varchar" Mode="In" />
+          <Parameter Name="dateOfBirth" Type="date" Mode="In" />
+          <Parameter Name="genderID" Type="int" Mode="In" />
+          <Parameter Name="maritalStatusID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdatePersonTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateTelephoneNumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="personID" Type="int" Mode="In" />
+          <Parameter Name="telephoneNumberTypeID" Type="int" Mode="In" />
+          <Parameter Name="telephoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateTelephoneNumberTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateTitles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="abbreviation" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateUserGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="userGroupName" Type="varchar" Mode="In" />
+          <Parameter Name="permissionString" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="userGroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_VerifyUsernameAndPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ArchdioceseModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressTypes" EntityType="Self.AddressTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Collections" EntityType="Self.Collections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollectionTypes" EntityType="Self.CollectionTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailAddresses" EntityType="Self.EmailAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailAddressTypes" EntityType="Self.EmailAddressTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incomes" EntityType="Self.Incomes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncomeTypes" EntityType="Self.IncomeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaritalStatuses" EntityType="Self.MaritalStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parishes" EntityType="Self.Parishes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParishTypes" EntityType="Self.ParishTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParishUsers" EntityType="Self.ParishUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonTypes" EntityType="Self.PersonTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TelephoneNumbers" EntityType="Self.TelephoneNumbers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TelephoneNumberTypes" EntityType="Self.TelephoneNumberTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Titles" EntityType="Self.Titles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChurchGroups" EntityType="Self.ChurchGroups" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChurchGroups].[ID] AS [ID], 
+    [ChurchGroups].[description] AS [description], 
+    [ChurchGroups].[isDeleted] AS [isDeleted]
+    FROM [dbo].[ChurchGroups] AS [ChurchGroups]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Addresses_AddressTypes" Association="Self.FK_Addresses_AddressTypes">
+            <End Role="AddressTypes" EntitySet="AddressTypes" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Addresses_Parishes" Association="Self.FK_Addresses_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Addresses_Persons" Association="Self.FK_Addresses_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collections_CollectionTypes" Association="Self.FK_Collections_CollectionTypes">
+            <End Role="CollectionTypes" EntitySet="CollectionTypes" />
+            <End Role="Collections" EntitySet="Collections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collections_ParishUsers" Association="Self.FK_Collections_ParishUsers">
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+            <End Role="Collections" EntitySet="Collections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailAddresses_EmailAddressTypes" Association="Self.FK_EmailAddresses_EmailAddressTypes">
+            <End Role="EmailAddressTypes" EntitySet="EmailAddressTypes" />
+            <End Role="EmailAddresses" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailAddresses_Parishes" Association="Self.FK_EmailAddresses_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="EmailAddresses" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailAddresses_Persons" Association="Self.FK_EmailAddresses_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EmailAddresses" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="Self.FK_Expenses_ExpenseTypes">
+            <End Role="ExpenseTypes" EntitySet="ExpenseTypes" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_ParishUsers" Association="Self.FK_Expenses_ParishUsers">
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="Self.FK_Incomes_IncomeTypes">
+            <End Role="IncomeTypes" EntitySet="IncomeTypes" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ParishUsers" Association="Self.FK_Incomes_ParishUsers">
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parishes_ParishTypes" Association="Self.FK_Parishes_ParishTypes">
+            <End Role="ParishTypes" EntitySet="ParishTypes" />
+            <End Role="Parishes" EntitySet="Parishes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParishUsers_Parishes" Association="Self.FK_ParishUsers_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParishUsers_Users" Association="Self.FK_ParishUsers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_Genders" Association="Self.FK_Persons_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_MaritalStatuses" Association="Self.FK_Persons_MaritalStatuses">
+            <End Role="MaritalStatuses" EntitySet="MaritalStatuses" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_PersonTypes" Association="Self.FK_Persons_PersonTypes">
+            <End Role="PersonTypes" EntitySet="PersonTypes" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_Titles" Association="Self.FK_Persons_Titles">
+            <End Role="Titles" EntitySet="Titles" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TelephoneNumbers_Parishes" Association="Self.FK_TelephoneNumbers_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="TelephoneNumbers" EntitySet="TelephoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TelephoneNumbers_Persons" Association="Self.FK_TelephoneNumbers_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="TelephoneNumbers" EntitySet="TelephoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TelephoneNumbers_TelephoneNumberTypes" Association="Self.FK_TelephoneNumbers_TelephoneNumberTypes">
+            <End Role="TelephoneNumberTypes" EntitySet="TelephoneNumberTypes" />
+            <End Role="TelephoneNumbers" EntitySet="TelephoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserGroups" Association="Self.FK_Users_UserGroups">
+            <End Role="UserGroups" EntitySet="UserGroups" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArchdioceseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="entityID" />
+            <PropertyRef Name="addressTypeID" />
+          </Key>
+          <Property Name="entityID" Type="Int32" Nullable="false" />
+          <Property Name="addressTypeID" Type="Int32" Nullable="false" />
+          <Property Name="addressLine1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="addressLine2" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="addressLine3" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="suburb" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AddressType" Relationship="Self.FK_Addresses_AddressTypes" FromRole="Addresses" ToRole="AddressTypes" />
+          <NavigationProperty Name="Parish" Relationship="Self.FK_Addresses_Parishes" FromRole="Addresses" ToRole="Parishes" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Addresses_Persons" FromRole="Addresses" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Addresses_AddressTypes" FromRole="AddressTypes" ToRole="Addresses" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parishUserID" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="collectionTypeID" Type="Int32" Nullable="false" />
+          <Property Name="collectionDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CollectionType" Relationship="Self.FK_Collections_CollectionTypes" FromRole="Collections" ToRole="CollectionTypes" />
+          <NavigationProperty Name="ParishUser" Relationship="Self.FK_Collections_ParishUsers" FromRole="Collections" ToRole="ParishUsers" />
+        </EntityType>
+        <EntityType Name="CollectionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="collectionTypeDescription" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Collections" Relationship="Self.FK_Collections_CollectionTypes" FromRole="CollectionTypes" ToRole="Collections" />
+        </EntityType>
+        <EntityType Name="EmailAddress">
+          <Key>
+            <PropertyRef Name="entityID" />
+            <PropertyRef Name="emailAddressTypeID" />
+          </Key>
+          <Property Name="entityID" Type="Int32" Nullable="false" />
+          <Property Name="emailAddressTypeID" Type="Int32" Nullable="false" />
+          <Property Name="emailAddress1" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EmailAddressType" Relationship="Self.FK_EmailAddresses_EmailAddressTypes" FromRole="EmailAddresses" ToRole="EmailAddressTypes" />
+          <NavigationProperty Name="Parish" Relationship="Self.FK_EmailAddresses_Parishes" FromRole="EmailAddresses" ToRole="Parishes" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_EmailAddresses_Persons" FromRole="EmailAddresses" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="EmailAddressType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EmailAddresses" Relationship="Self.FK_EmailAddresses_EmailAddressTypes" FromRole="EmailAddressTypes" ToRole="EmailAddresses" />
+        </EntityType>
+        <EntityType Name="Expens">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parishUserID" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="expenseTypeID" Type="Int32" Nullable="false" />
+          <Property Name="expenseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ExpenseType" Relationship="Self.FK_Expenses_ExpenseTypes" FromRole="Expenses" ToRole="ExpenseTypes" />
+          <NavigationProperty Name="ParishUser" Relationship="Self.FK_Expenses_ParishUsers" FromRole="Expenses" ToRole="ParishUsers" />
+        </EntityType>
+        <EntityType Name="ExpenseType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Expenses" Relationship="Self.FK_Expenses_ExpenseTypes" FromRole="ExpenseTypes" ToRole="Expenses" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Genders" FromRole="Genders" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parishUserID" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="incomeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="incomeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IncomeType" Relationship="Self.FK_Incomes_IncomeTypes" FromRole="Incomes" ToRole="IncomeTypes" />
+          <NavigationProperty Name="ParishUser" Relationship="Self.FK_Incomes_ParishUsers" FromRole="Incomes" ToRole="ParishUsers" />
+        </EntityType>
+        <EntityType Name="IncomeType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_IncomeTypes" FromRole="IncomeTypes" ToRole="Incomes" />
+        </EntityType>
+        <EntityType Name="MaritalStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_MaritalStatuses" FromRole="MaritalStatuses" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="Parish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parishName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parishTypeID" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Addresses_Parishes" FromRole="Parishes" ToRole="Addresses" />
+          <NavigationProperty Name="EmailAddresses" Relationship="Self.FK_EmailAddresses_Parishes" FromRole="Parishes" ToRole="EmailAddresses" />
+          <NavigationProperty Name="ParishType" Relationship="Self.FK_Parishes_ParishTypes" FromRole="Parishes" ToRole="ParishTypes" />
+          <NavigationProperty Name="ParishUsers" Relationship="Self.FK_ParishUsers_Parishes" FromRole="Parishes" ToRole="ParishUsers" />
+          <NavigationProperty Name="TelephoneNumbers" Relationship="Self.FK_TelephoneNumbers_Parishes" FromRole="Parishes" ToRole="TelephoneNumbers" />
+        </EntityType>
+        <EntityType Name="ParishType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parishTypeDescription" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Parishes" Relationship="Self.FK_Parishes_ParishTypes" FromRole="ParishTypes" ToRole="Parishes" />
+        </EntityType>
+        <EntityType Name="ParishUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parishID" Type="Int32" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Collections" Relationship="Self.FK_Collections_ParishUsers" FromRole="ParishUsers" ToRole="Collections" />
+          <NavigationProperty Name="Expenses" Relationship="Self.FK_Expenses_ParishUsers" FromRole="ParishUsers" ToRole="Expenses" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_ParishUsers" FromRole="ParishUsers" ToRole="Incomes" />
+          <NavigationProperty Name="Parish" Relationship="Self.FK_ParishUsers_Parishes" FromRole="ParishUsers" ToRole="Parishes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ParishUsers_Users" FromRole="ParishUsers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titleID" Type="Int32" Nullable="false" />
+          <Property Name="personTypeID" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="genderID" Type="Int32" Nullable="false" />
+          <Property Name="maritalStatusID" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Addresses_Persons" FromRole="Persons" ToRole="Addresses" />
+          <NavigationProperty Name="EmailAddresses" Relationship="Self.FK_EmailAddresses_Persons" FromRole="Persons" ToRole="EmailAddresses" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Persons_Genders" FromRole="Persons" ToRole="Genders" />
+          <NavigationProperty Name="MaritalStatus" Relationship="Self.FK_Persons_MaritalStatuses" FromRole="Persons" ToRole="MaritalStatuses" />
+          <NavigationProperty Name="PersonType" Relationship="Self.FK_Persons_PersonTypes" FromRole="Persons" ToRole="PersonTypes" />
+          <NavigationProperty Name="Title" Relationship="Self.FK_Persons_Titles" FromRole="Persons" ToRole="Titles" />
+          <NavigationProperty Name="TelephoneNumbers" Relationship="Self.FK_TelephoneNumbers_Persons" FromRole="Persons" ToRole="TelephoneNumbers" />
+        </EntityType>
+        <EntityType Name="PersonType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_PersonTypes" FromRole="PersonTypes" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TelephoneNumber">
+          <Key>
+            <PropertyRef Name="entityID" />
+            <PropertyRef Name="telephoneNumberTypeID" />
+          </Key>
+          <Property Name="entityID" Type="Int32" Nullable="false" />
+          <Property Name="telephoneNumberTypeID" Type="Int32" Nullable="false" />
+          <Property Name="telephoneNumber1" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Parish" Relationship="Self.FK_TelephoneNumbers_Parishes" FromRole="TelephoneNumbers" ToRole="Parishes" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_TelephoneNumbers_Persons" FromRole="TelephoneNumbers" ToRole="Persons" />
+          <NavigationProperty Name="TelephoneNumberType" Relationship="Self.FK_TelephoneNumbers_TelephoneNumberTypes" FromRole="TelephoneNumbers" ToRole="TelephoneNumberTypes" />
+        </EntityType>
+        <EntityType Name="TelephoneNumberType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TelephoneNumbers" Relationship="Self.FK_TelephoneNumbers_TelephoneNumberTypes" FromRole="TelephoneNumberTypes" ToRole="TelephoneNumbers" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="abbreviation" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Persons" Relationship="Self.FK_Persons_Titles" FromRole="Titles" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userGroupName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="permissionString" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserGroups" FromRole="UserGroups" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userGroupID" Type="Int32" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ParishUsers" Relationship="Self.FK_ParishUsers_Users" FromRole="Users" ToRole="ParishUsers" />
+          <NavigationProperty Name="UserGroup" Relationship="Self.FK_Users_UserGroups" FromRole="Users" ToRole="UserGroups" />
+        </EntityType>
+        <EntityType Name="ChurchGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="isDeleted" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Addresses_AddressTypes">
+          <End Role="AddressTypes" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="addressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Addresses_Parishes">
+          <End Role="Parishes" Type="Self.Parish" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Addresses_Persons">
+          <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collections_CollectionTypes">
+          <End Role="CollectionTypes" Type="Self.CollectionType" Multiplicity="1" />
+          <End Role="Collections" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollectionTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Collections">
+              <PropertyRef Name="collectionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collections_ParishUsers">
+          <End Role="ParishUsers" Type="Self.ParishUser" Multiplicity="1" />
+          <End Role="Collections" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Collections">
+              <PropertyRef Name="parishUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailAddresses_EmailAddressTypes">
+          <End Role="EmailAddressTypes" Type="Self.EmailAddressType" Multiplicity="1" />
+          <End Role="EmailAddresses" Type="Self.EmailAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailAddressTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmailAddresses">
+              <PropertyRef Name="emailAddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailAddresses_Parishes">
+          <End Role="Parishes" Type="Self.Parish" Multiplicity="1" />
+          <End Role="EmailAddresses" Type="Self.EmailAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmailAddresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailAddresses_Persons">
+          <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+          <End Role="EmailAddresses" Type="Self.EmailAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmailAddresses">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_ExpenseTypes">
+          <End Role="ExpenseTypes" Type="Self.ExpenseType" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpenseTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="expenseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_ParishUsers">
+          <End Role="ParishUsers" Type="Self.ParishUser" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="parishUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_Genders">
+          <End Role="Genders" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_IncomeTypes">
+          <End Role="IncomeTypes" Type="Self.IncomeType" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="incomeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_ParishUsers">
+          <End Role="ParishUsers" Type="Self.ParishUser" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="parishUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_MaritalStatuses">
+          <End Role="MaritalStatuses" Type="Self.MaritalStatus" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaritalStatuses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="maritalStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parishes_ParishTypes">
+          <End Role="ParishTypes" Type="Self.ParishType" Multiplicity="1" />
+          <End Role="Parishes" Type="Self.Parish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParishTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Parishes">
+              <PropertyRef Name="parishTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParishUsers_Parishes">
+          <End Role="Parishes" Type="Self.Parish" Multiplicity="1" />
+          <End Role="ParishUsers" Type="Self.ParishUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ParishUsers">
+              <PropertyRef Name="parishID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TelephoneNumbers_Parishes">
+          <End Role="Parishes" Type="Self.Parish" Multiplicity="1" />
+          <End Role="TelephoneNumbers" Type="Self.TelephoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parishes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TelephoneNumbers">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParishUsers_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="ParishUsers" Type="Self.ParishUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ParishUsers">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_PersonTypes">
+          <End Role="PersonTypes" Type="Self.PersonType" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="personTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_Titles">
+          <End Role="Titles" Type="Self.Title" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TelephoneNumbers_Persons">
+          <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+          <End Role="TelephoneNumbers" Type="Self.TelephoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TelephoneNumbers">
+              <PropertyRef Name="entityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TelephoneNumbers_TelephoneNumberTypes">
+          <End Role="TelephoneNumberTypes" Type="Self.TelephoneNumberType" Multiplicity="1" />
+          <End Role="TelephoneNumbers" Type="Self.TelephoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TelephoneNumberTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TelephoneNumbers">
+              <PropertyRef Name="telephoneNumberTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserGroups">
+          <End Role="UserGroups" Type="Self.UserGroup" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="userGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ArchdioceseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Collections" EntityType="Self.Collection" />
+          <EntitySet Name="CollectionTypes" EntityType="Self.CollectionType" />
+          <EntitySet Name="EmailAddresses" EntityType="Self.EmailAddress" />
+          <EntitySet Name="EmailAddressTypes" EntityType="Self.EmailAddressType" />
+          <EntitySet Name="Expenses" EntityType="Self.Expens" />
+          <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseType" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Incomes" EntityType="Self.Income" />
+          <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
+          <EntitySet Name="MaritalStatuses" EntityType="Self.MaritalStatus" />
+          <EntitySet Name="Parishes" EntityType="Self.Parish" />
+          <EntitySet Name="ParishTypes" EntityType="Self.ParishType" />
+          <EntitySet Name="ParishUsers" EntityType="Self.ParishUser" />
+          <EntitySet Name="Persons" EntityType="Self.Person" />
+          <EntitySet Name="PersonTypes" EntityType="Self.PersonType" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TelephoneNumbers" EntityType="Self.TelephoneNumber" />
+          <EntitySet Name="TelephoneNumberTypes" EntityType="Self.TelephoneNumberType" />
+          <EntitySet Name="Titles" EntityType="Self.Title" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="ChurchGroups" EntityType="Self.ChurchGroup" />
+          <AssociationSet Name="FK_Addresses_AddressTypes" Association="Self.FK_Addresses_AddressTypes">
+            <End Role="AddressTypes" EntitySet="AddressTypes" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Addresses_Parishes" Association="Self.FK_Addresses_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Addresses_Persons" Association="Self.FK_Addresses_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collections_CollectionTypes" Association="Self.FK_Collections_CollectionTypes">
+            <End Role="CollectionTypes" EntitySet="CollectionTypes" />
+            <End Role="Collections" EntitySet="Collections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collections_ParishUsers" Association="Self.FK_Collections_ParishUsers">
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+            <End Role="Collections" EntitySet="Collections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailAddresses_EmailAddressTypes" Association="Self.FK_EmailAddresses_EmailAddressTypes">
+            <End Role="EmailAddressTypes" EntitySet="EmailAddressTypes" />
+            <End Role="EmailAddresses" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailAddresses_Parishes" Association="Self.FK_EmailAddresses_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="EmailAddresses" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailAddresses_Persons" Association="Self.FK_EmailAddresses_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EmailAddresses" EntitySet="EmailAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="Self.FK_Expenses_ExpenseTypes">
+            <End Role="ExpenseTypes" EntitySet="ExpenseTypes" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_ParishUsers" Association="Self.FK_Expenses_ParishUsers">
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_Genders" Association="Self.FK_Persons_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="Self.FK_Incomes_IncomeTypes">
+            <End Role="IncomeTypes" EntitySet="IncomeTypes" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_ParishUsers" Association="Self.FK_Incomes_ParishUsers">
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_MaritalStatuses" Association="Self.FK_Persons_MaritalStatuses">
+            <End Role="MaritalStatuses" EntitySet="MaritalStatuses" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parishes_ParishTypes" Association="Self.FK_Parishes_ParishTypes">
+            <End Role="ParishTypes" EntitySet="ParishTypes" />
+            <End Role="Parishes" EntitySet="Parishes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParishUsers_Parishes" Association="Self.FK_ParishUsers_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TelephoneNumbers_Parishes" Association="Self.FK_TelephoneNumbers_Parishes">
+            <End Role="Parishes" EntitySet="Parishes" />
+            <End Role="TelephoneNumbers" EntitySet="TelephoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParishUsers_Users" Association="Self.FK_ParishUsers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ParishUsers" EntitySet="ParishUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_PersonTypes" Association="Self.FK_Persons_PersonTypes">
+            <End Role="PersonTypes" EntitySet="PersonTypes" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_Titles" Association="Self.FK_Persons_Titles">
+            <End Role="Titles" EntitySet="Titles" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TelephoneNumbers_Persons" Association="Self.FK_TelephoneNumbers_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="TelephoneNumbers" EntitySet="TelephoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TelephoneNumbers_TelephoneNumberTypes" Association="Self.FK_TelephoneNumbers_TelephoneNumberTypes">
+            <End Role="TelephoneNumberTypes" EntitySet="TelephoneNumberTypes" />
+            <End Role="TelephoneNumbers" EntitySet="TelephoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserGroups" Association="Self.FK_Users_UserGroups">
+            <End Role="UserGroups" EntitySet="UserGroups" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="usp_DeleteAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="addressTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAddressTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteChurchGroups">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteCollections">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteCollectionTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteEmailAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="emailAddressTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteEmailAddressTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteGenders">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteMaritalStatuses">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteParishes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteParishTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteParishUsers">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeletePersons">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeletePersonTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteTelephoneNumbers">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="telephoneNumberTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteTelephoneNumberTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteTitles">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteUserGroups">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteUsers">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DisableCollectionTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EnableCollectionTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="addressTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="addressLine1" Mode="In" Type="String" />
+            <Parameter Name="addressLine2" Mode="In" Type="String" />
+            <Parameter Name="addressLine3" Mode="In" Type="String" />
+            <Parameter Name="suburb" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetAddressTypes" ReturnType="Collection(ArchdioceseModel.usp_GetAddressTypes_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetChurchGroups" ReturnType="Collection(ArchdioceseModel.usp_GetChurchGroups_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetCollections" ReturnType="Collection(ArchdioceseModel.usp_GetCollections_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishUserID" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+            <Parameter Name="collectionTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="collectionDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetCollectionTypes" ReturnType="Collection(ArchdioceseModel.usp_GetCollectionTypes_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="collectionTypeDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetEmailAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="emailAddressTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="emailAddress" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetEmailAddressTypes" ReturnType="Collection(ArchdioceseModel.usp_GetEmailAddressTypes_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetGenders" ReturnType="Collection(ArchdioceseModel.usp_GetGenders_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetMaritalStatuses" ReturnType="Collection(ArchdioceseModel.usp_GetMaritalStatuses_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetParishes" ReturnType="Collection(ArchdioceseModel.usp_GetParishes_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishName" Mode="In" Type="String" />
+            <Parameter Name="parishTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetParishesByUserID" ReturnType="Collection(ArchdioceseModel.usp_GetParishesByUserID_Result)">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetParishTypes" ReturnType="Collection(ArchdioceseModel.usp_GetParishTypes_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishTypeDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetParishUsers" ReturnType="Collection(ArchdioceseModel.usp_GetParishUsers_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetPersons" ReturnType="Collection(ArchdioceseModel.usp_GetPersons_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="titleID" Mode="In" Type="Int32" />
+            <Parameter Name="personTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="dateOfBirth" Mode="In" Type="DateTime" />
+            <Parameter Name="genderID" Mode="In" Type="Int32" />
+            <Parameter Name="maritalStatusID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetPersonTypes" ReturnType="Collection(ArchdioceseModel.usp_GetPersonTypes_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetTelephoneNumbers">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="telephoneNumberTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="telephoneNumber" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetTelephoneNumberTypes" ReturnType="Collection(ArchdioceseModel.usp_GetTelephoneNumberTypes_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetTitles" ReturnType="Collection(ArchdioceseModel.usp_GetTitles_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="abbreviation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetUserGroups" ReturnType="Collection(ArchdioceseModel.usp_GetUserGroups_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="userGroupName" Mode="In" Type="String" />
+            <Parameter Name="permissionString" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetUsers" ReturnType="Collection(ArchdioceseModel.usp_GetUsers_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="userGroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="addressTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="addressLine1" Mode="In" Type="String" />
+            <Parameter Name="addressLine2" Mode="In" Type="String" />
+            <Parameter Name="addressLine3" Mode="In" Type="String" />
+            <Parameter Name="suburb" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertAddressTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertChurchGroups">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertCollections">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="parishUserID" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+            <Parameter Name="collectionTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="collectionDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertCollectionTypes">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="collectionTypeDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertEmailAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="emailAddressTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="emailAddress" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertEmailAddressTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertGenders">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertMaritalStatuses">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertParishes">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="parishName" Mode="In" Type="String" />
+            <Parameter Name="parishTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertParishTypes">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="parishTypeDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertParishUsers">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="parishID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertPersons">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="titleID" Mode="In" Type="Int32" />
+            <Parameter Name="personTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="dateOfBirth" Mode="In" Type="DateTime" />
+            <Parameter Name="genderID" Mode="In" Type="Int32" />
+            <Parameter Name="maritalStatusID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertPersonTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertTelephoneNumbers">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="telephoneNumberTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="telephoneNumber" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertTelephoneNumberTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertTitles">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="abbreviation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertUserGroups">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="userGroupName" Mode="In" Type="String" />
+            <Parameter Name="permissionString" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertUsers">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="userGroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="addressTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="addressLine1" Mode="In" Type="String" />
+            <Parameter Name="addressLine2" Mode="In" Type="String" />
+            <Parameter Name="addressLine3" Mode="In" Type="String" />
+            <Parameter Name="suburb" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateAddressTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateChurchGroups">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateCollections">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishUserID" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+            <Parameter Name="collectionTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="collectionDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateCollectionTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="collectionTypeDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateEmailAddresses">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="emailAddressTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="emailAddress" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateEmailAddressTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateGenders">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateMaritalStatuses">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateParishes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishName" Mode="In" Type="String" />
+            <Parameter Name="parishTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateParishTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishTypeDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateParishUsers">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="parishID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdatePersons">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="titleID" Mode="In" Type="Int32" />
+            <Parameter Name="personTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="dateOfBirth" Mode="In" Type="DateTime" />
+            <Parameter Name="genderID" Mode="In" Type="Int32" />
+            <Parameter Name="maritalStatusID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdatePersonTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateTelephoneNumbers">
+            <Parameter Name="personID" Mode="In" Type="Int32" />
+            <Parameter Name="telephoneNumberTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="telephoneNumber" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateTelephoneNumberTypes">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateTitles">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="abbreviation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateUserGroups">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="userGroupName" Mode="In" Type="String" />
+            <Parameter Name="permissionString" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateUsers">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="userGroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_VerifyUsernameAndPassword" ReturnType="Collection(ArchdioceseModel.usp_VerifyUsernameAndPassword_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="usp_GetAddressTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetChurchGroups_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="32" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetCollections_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="parishUserID" Nullable="false" />
+          <Property Type="Decimal" Name="amount" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="collectionTypeID" Nullable="false" />
+          <Property Type="DateTime" Name="collectionDateTime" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetCollectionTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="collectionTypeDescription" Nullable="false" MaxLength="16" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetEmailAddressTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetGenders_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetMaritalStatuses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetParishes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="parishName" Nullable="false" MaxLength="32" />
+          <Property Type="Int32" Name="parishTypeID" Nullable="false" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetParishesByUserID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="parishName" Nullable="false" MaxLength="32" />
+          <Property Type="Int32" Name="parishTypeID" Nullable="false" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetParishTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="parishTypeDescription" Nullable="false" MaxLength="32" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetParishUsers_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="parishID" Nullable="false" />
+          <Property Type="Int32" Name="userID" Nullable="false" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetPersons_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="titleID" Nullable="false" />
+          <Property Type="Int32" Name="personTypeID" Nullable="false" />
+          <Property Type="String" Name="firstName" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="surname" Nullable="false" MaxLength="16" />
+          <Property Type="DateTime" Name="dateOfBirth" Nullable="false" />
+          <Property Type="Int32" Name="genderID" Nullable="false" />
+          <Property Type="Int32" Name="maritalStatusID" Nullable="false" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetPersonTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetTelephoneNumberTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetTitles_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="abbreviation" Nullable="false" MaxLength="4" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetUserGroups_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="userGroupName" Nullable="false" MaxLength="32" />
+          <Property Type="String" Name="permissionString" Nullable="false" MaxLength="128" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_GetUsers_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="userGroupID" Nullable="false" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_VerifyUsernameAndPassword_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+          <Property Type="String" Name="permissionString" Nullable="false" MaxLength="128" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ArchdioceseModelStoreContainer" CdmEntityContainer="ArchdioceseEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ArchdioceseModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="entityID" ColumnName="entityID" />
+                <ScalarProperty Name="addressTypeID" ColumnName="addressTypeID" />
+                <ScalarProperty Name="addressLine1" ColumnName="addressLine1" />
+                <ScalarProperty Name="addressLine2" ColumnName="addressLine2" />
+                <ScalarProperty Name="addressLine3" ColumnName="addressLine3" />
+                <ScalarProperty Name="suburb" ColumnName="suburb" />
+                <ScalarProperty Name="city" ColumnName="city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.AddressType">
+              <MappingFragment StoreEntitySet="AddressTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ArchdioceseModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ArchdioceseModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ArchdioceseModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ArchdioceseModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Collections">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Collection">
+              <MappingFragment StoreEntitySet="Collections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="collectionTypeID" ColumnName="collectionTypeID" />
+                <ScalarProperty Name="collectionDateTime" ColumnName="collectionDateTime" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollectionTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.CollectionType">
+              <MappingFragment StoreEntitySet="CollectionTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="collectionTypeDescription" ColumnName="collectionTypeDescription" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailAddresses">
+            <EntityTypeMapping TypeName="ArchdioceseModel.EmailAddress">
+              <MappingFragment StoreEntitySet="EmailAddresses">
+                <ScalarProperty Name="entityID" ColumnName="entityID" />
+                <ScalarProperty Name="emailAddressTypeID" ColumnName="emailAddressTypeID" />
+                <ScalarProperty Name="emailAddress1" ColumnName="emailAddress" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailAddressTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.EmailAddressType">
+              <MappingFragment StoreEntitySet="EmailAddressTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Expens">
+              <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="expenseTypeID" ColumnName="expenseTypeID" />
+                <ScalarProperty Name="expenseDate" ColumnName="expenseDate" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpenseTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.ExpenseType">
+              <MappingFragment StoreEntitySet="ExpenseTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Gender">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Income">
+              <MappingFragment StoreEntitySet="Incomes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="incomeTypeID" ColumnName="incomeTypeID" />
+                <ScalarProperty Name="incomeDate" ColumnName="incomeDate" />
+                <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IncomeTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.IncomeType">
+              <MappingFragment StoreEntitySet="IncomeTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaritalStatuses">
+            <EntityTypeMapping TypeName="ArchdioceseModel.MaritalStatus">
+              <MappingFragment StoreEntitySet="MaritalStatuses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parishes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Parish">
+              <MappingFragment StoreEntitySet="Parishes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishName" ColumnName="parishName" />
+                <ScalarProperty Name="parishTypeID" ColumnName="parishTypeID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParishTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.ParishType">
+              <MappingFragment StoreEntitySet="ParishTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishTypeDescription" ColumnName="parishTypeDescription" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParishUsers">
+            <EntityTypeMapping TypeName="ArchdioceseModel.ParishUser">
+              <MappingFragment StoreEntitySet="ParishUsers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishID" ColumnName="parishID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+                <ScalarProperty Name="personTypeID" ColumnName="personTypeID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="maritalStatusID" ColumnName="maritalStatusID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.PersonType">
+              <MappingFragment StoreEntitySet="PersonTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ArchdioceseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TelephoneNumbers">
+            <EntityTypeMapping TypeName="ArchdioceseModel.TelephoneNumber">
+              <MappingFragment StoreEntitySet="TelephoneNumbers">
+                <ScalarProperty Name="entityID" ColumnName="entityID" />
+                <ScalarProperty Name="telephoneNumberTypeID" ColumnName="telephoneNumberTypeID" />
+                <ScalarProperty Name="telephoneNumber1" ColumnName="telephoneNumber" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TelephoneNumberTypes">
+            <EntityTypeMapping TypeName="ArchdioceseModel.TelephoneNumberType">
+              <MappingFragment StoreEntitySet="TelephoneNumberTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titles">
+            <EntityTypeMapping TypeName="ArchdioceseModel.Title">
+              <MappingFragment StoreEntitySet="Titles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroups">
+            <EntityTypeMapping TypeName="ArchdioceseModel.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userGroupName" ColumnName="userGroupName" />
+                <ScalarProperty Name="permissionString" ColumnName="permissionString" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ArchdioceseModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userGroupID" ColumnName="userGroupID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChurchGroups">
+            <EntityTypeMapping TypeName="ArchdioceseModel.ChurchGroup">
+              <MappingFragment StoreEntitySet="ChurchGroups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ArchdioceseModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ArchdioceseModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ArchdioceseModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ArchdioceseModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ArchdioceseModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ArchdioceseModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ArchdioceseModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ArchdioceseModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAddresses" FunctionName="ArchdioceseModel.Store.usp_DeleteAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAddressTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteAddressTypes" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteChurchGroups" FunctionName="ArchdioceseModel.Store.usp_DeleteChurchGroups" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteCollections" FunctionName="ArchdioceseModel.Store.usp_DeleteCollections" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteCollectionTypes" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_DeleteEmailAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteEmailAddressTypes" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteGenders" FunctionName="ArchdioceseModel.Store.usp_DeleteGenders" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_DeleteMaritalStatuses" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteParishes" FunctionName="ArchdioceseModel.Store.usp_DeleteParishes" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteParishTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteParishTypes" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteParishUsers" FunctionName="ArchdioceseModel.Store.usp_DeleteParishUsers" />
+          <FunctionImportMapping FunctionImportName="usp_DeletePersons" FunctionName="ArchdioceseModel.Store.usp_DeletePersons" />
+          <FunctionImportMapping FunctionImportName="usp_DeletePersonTypes" FunctionName="ArchdioceseModel.Store.usp_DeletePersonTypes" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_DeleteTelephoneNumbers" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteTelephoneNumberTypes" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteTitles" FunctionName="ArchdioceseModel.Store.usp_DeleteTitles" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteUserGroups" FunctionName="ArchdioceseModel.Store.usp_DeleteUserGroups" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteUsers" FunctionName="ArchdioceseModel.Store.usp_DeleteUsers" />
+          <FunctionImportMapping FunctionImportName="usp_DisableCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_DisableCollectionTypes" />
+          <FunctionImportMapping FunctionImportName="usp_EnableCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_EnableCollectionTypes" />
+          <FunctionImportMapping FunctionImportName="usp_GetAddresses" FunctionName="ArchdioceseModel.Store.usp_GetAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_GetAddressTypes" FunctionName="ArchdioceseModel.Store.usp_GetAddressTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetAddressTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetChurchGroups" FunctionName="ArchdioceseModel.Store.usp_GetChurchGroups">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetChurchGroups_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetCollections" FunctionName="ArchdioceseModel.Store.usp_GetCollections">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetCollections_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="collectionTypeID" ColumnName="collectionTypeID" />
+                <ScalarProperty Name="collectionDateTime" ColumnName="collectionDateTime" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_GetCollectionTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetCollectionTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="collectionTypeDescription" ColumnName="collectionTypeDescription" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_GetEmailAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_GetEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_GetEmailAddressTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetEmailAddressTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetGenders" FunctionName="ArchdioceseModel.Store.usp_GetGenders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetGenders_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_GetMaritalStatuses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetMaritalStatuses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetParishes" FunctionName="ArchdioceseModel.Store.usp_GetParishes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishName" ColumnName="parishName" />
+                <ScalarProperty Name="parishTypeID" ColumnName="parishTypeID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetParishesByUserID" FunctionName="ArchdioceseModel.Store.usp_GetParishesByUserID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishesByUserID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishName" ColumnName="parishName" />
+                <ScalarProperty Name="parishTypeID" ColumnName="parishTypeID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetParishTypes" FunctionName="ArchdioceseModel.Store.usp_GetParishTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishTypeDescription" ColumnName="parishTypeDescription" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetParishUsers" FunctionName="ArchdioceseModel.Store.usp_GetParishUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishUsers_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parishID" ColumnName="parishID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetPersons" FunctionName="ArchdioceseModel.Store.usp_GetPersons">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetPersons_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+                <ScalarProperty Name="personTypeID" ColumnName="personTypeID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="maritalStatusID" ColumnName="maritalStatusID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetPersonTypes" FunctionName="ArchdioceseModel.Store.usp_GetPersonTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetPersonTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_GetTelephoneNumbers" />
+          <FunctionImportMapping FunctionImportName="usp_GetTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_GetTelephoneNumberTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetTelephoneNumberTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetTitles" FunctionName="ArchdioceseModel.Store.usp_GetTitles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetTitles_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetUserGroups" FunctionName="ArchdioceseModel.Store.usp_GetUserGroups">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetUserGroups_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userGroupName" ColumnName="userGroupName" />
+                <ScalarProperty Name="permissionString" ColumnName="permissionString" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetUsers" FunctionName="ArchdioceseModel.Store.usp_GetUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetUsers_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userGroupID" ColumnName="userGroupID" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_InsertAddresses" FunctionName="ArchdioceseModel.Store.usp_InsertAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_InsertAddressTypes" FunctionName="ArchdioceseModel.Store.usp_InsertAddressTypes" />
+          <FunctionImportMapping FunctionImportName="usp_InsertChurchGroups" FunctionName="ArchdioceseModel.Store.usp_InsertChurchGroups" />
+          <FunctionImportMapping FunctionImportName="usp_InsertCollections" FunctionName="ArchdioceseModel.Store.usp_InsertCollections" />
+          <FunctionImportMapping FunctionImportName="usp_InsertCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_InsertCollectionTypes" />
+          <FunctionImportMapping FunctionImportName="usp_InsertEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_InsertEmailAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_InsertEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_InsertEmailAddressTypes" />
+          <FunctionImportMapping FunctionImportName="usp_InsertGenders" FunctionName="ArchdioceseModel.Store.usp_InsertGenders" />
+          <FunctionImportMapping FunctionImportName="usp_InsertMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_InsertMaritalStatuses" />
+          <FunctionImportMapping FunctionImportName="usp_InsertParishes" FunctionName="ArchdioceseModel.Store.usp_InsertParishes" />
+          <FunctionImportMapping FunctionImportName="usp_InsertParishTypes" FunctionName="ArchdioceseModel.Store.usp_InsertParishTypes" />
+          <FunctionImportMapping FunctionImportName="usp_InsertParishUsers" FunctionName="ArchdioceseModel.Store.usp_InsertParishUsers" />
+          <FunctionImportMapping FunctionImportName="usp_InsertPersons" FunctionName="ArchdioceseModel.Store.usp_InsertPersons" />
+          <FunctionImportMapping FunctionImportName="usp_InsertPersonTypes" FunctionName="ArchdioceseModel.Store.usp_InsertPersonTypes" />
+          <FunctionImportMapping FunctionImportName="usp_InsertTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_InsertTelephoneNumbers" />
+          <FunctionImportMapping FunctionImportName="usp_InsertTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_InsertTelephoneNumberTypes" />
+          <FunctionImportMapping FunctionImportName="usp_InsertTitles" FunctionName="ArchdioceseModel.Store.usp_InsertTitles" />
+          <FunctionImportMapping FunctionImportName="usp_InsertUserGroups" FunctionName="ArchdioceseModel.Store.usp_InsertUserGroups" />
+          <FunctionImportMapping FunctionImportName="usp_InsertUsers" FunctionName="ArchdioceseModel.Store.usp_InsertUsers" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateAddresses" FunctionName="ArchdioceseModel.Store.usp_UpdateAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateAddressTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateAddressTypes" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateChurchGroups" FunctionName="ArchdioceseModel.Store.usp_UpdateChurchGroups" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateCollections" FunctionName="ArchdioceseModel.Store.usp_UpdateCollections" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateCollectionTypes" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_UpdateEmailAddresses" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateEmailAddressTypes" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateGenders" FunctionName="ArchdioceseModel.Store.usp_UpdateGenders" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_UpdateMaritalStatuses" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateParishes" FunctionName="ArchdioceseModel.Store.usp_UpdateParishes" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateParishTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateParishTypes" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateParishUsers" FunctionName="ArchdioceseModel.Store.usp_UpdateParishUsers" />
+          <FunctionImportMapping FunctionImportName="usp_UpdatePersons" FunctionName="ArchdioceseModel.Store.usp_UpdatePersons" />
+          <FunctionImportMapping FunctionImportName="usp_UpdatePersonTypes" FunctionName="ArchdioceseModel.Store.usp_UpdatePersonTypes" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_UpdateTelephoneNumbers" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateTelephoneNumberTypes" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateTitles" FunctionName="ArchdioceseModel.Store.usp_UpdateTitles" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateUserGroups" FunctionName="ArchdioceseModel.Store.usp_UpdateUserGroups" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateUsers" FunctionName="ArchdioceseModel.Store.usp_UpdateUsers" />
+          <FunctionImportMapping FunctionImportName="usp_VerifyUsernameAndPassword" FunctionName="ArchdioceseModel.Store.usp_VerifyUsernameAndPassword">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArchdioceseModel.usp_VerifyUsernameAndPassword_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="permissionString" ColumnName="permissionString" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

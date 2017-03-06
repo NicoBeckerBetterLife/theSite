@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ArchdioceseModelStoreContainer" CdmEntityContainer="ArchdioceseEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="ArchdioceseModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Address">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="entityID" ColumnName="entityID" />
+          <ScalarProperty Name="addressTypeID" ColumnName="addressTypeID" />
+          <ScalarProperty Name="addressLine1" ColumnName="addressLine1" />
+          <ScalarProperty Name="addressLine2" ColumnName="addressLine2" />
+          <ScalarProperty Name="addressLine3" ColumnName="addressLine3" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="city" ColumnName="city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.AddressType">
+        <MappingFragment StoreEntitySet="AddressTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="ArchdioceseModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="ArchdioceseModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="ArchdioceseModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ArchdioceseModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collections">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Collection">
+        <MappingFragment StoreEntitySet="Collections">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="collectionTypeID" ColumnName="collectionTypeID" />
+          <ScalarProperty Name="collectionDateTime" ColumnName="collectionDateTime" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollectionTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.CollectionType">
+        <MappingFragment StoreEntitySet="CollectionTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="collectionTypeDescription" ColumnName="collectionTypeDescription" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailAddresses">
+      <EntityTypeMapping TypeName="ArchdioceseModel.EmailAddress">
+        <MappingFragment StoreEntitySet="EmailAddresses">
+          <ScalarProperty Name="entityID" ColumnName="entityID" />
+          <ScalarProperty Name="emailAddressTypeID" ColumnName="emailAddressTypeID" />
+          <ScalarProperty Name="emailAddress1" ColumnName="emailAddress" />
+          <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailAddressTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.EmailAddressType">
+        <MappingFragment StoreEntitySet="EmailAddressTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expenses">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Expens">
+        <MappingFragment StoreEntitySet="Expenses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="expenseTypeID" ColumnName="expenseTypeID" />
+          <ScalarProperty Name="expenseDate" ColumnName="expenseDate" />
+          <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpenseTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.ExpenseType">
+        <MappingFragment StoreEntitySet="ExpenseTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Gender">
+        <MappingFragment StoreEntitySet="Genders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incomes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Income">
+        <MappingFragment StoreEntitySet="Incomes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="incomeTypeID" ColumnName="incomeTypeID" />
+          <ScalarProperty Name="incomeDate" ColumnName="incomeDate" />
+          <ScalarProperty Name="dateSubmitted" ColumnName="dateSubmitted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncomeTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.IncomeType">
+        <MappingFragment StoreEntitySet="IncomeTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaritalStatuses">
+      <EntityTypeMapping TypeName="ArchdioceseModel.MaritalStatus">
+        <MappingFragment StoreEntitySet="MaritalStatuses">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parishes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Parish">
+        <MappingFragment StoreEntitySet="Parishes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishName" ColumnName="parishName" />
+          <ScalarProperty Name="parishTypeID" ColumnName="parishTypeID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParishTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.ParishType">
+        <MappingFragment StoreEntitySet="ParishTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishTypeDescription" ColumnName="parishTypeDescription" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParishUsers">
+      <EntityTypeMapping TypeName="ArchdioceseModel.ParishUser">
+        <MappingFragment StoreEntitySet="ParishUsers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishID" ColumnName="parishID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Person">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="titleID" ColumnName="titleID" />
+          <ScalarProperty Name="personTypeID" ColumnName="personTypeID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="genderID" ColumnName="genderID" />
+          <ScalarProperty Name="maritalStatusID" ColumnName="maritalStatusID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.PersonType">
+        <MappingFragment StoreEntitySet="PersonTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ArchdioceseModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TelephoneNumbers">
+      <EntityTypeMapping TypeName="ArchdioceseModel.TelephoneNumber">
+        <MappingFragment StoreEntitySet="TelephoneNumbers">
+          <ScalarProperty Name="entityID" ColumnName="entityID" />
+          <ScalarProperty Name="telephoneNumberTypeID" ColumnName="telephoneNumberTypeID" />
+          <ScalarProperty Name="telephoneNumber1" ColumnName="telephoneNumber" />
+          <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TelephoneNumberTypes">
+      <EntityTypeMapping TypeName="ArchdioceseModel.TelephoneNumberType">
+        <MappingFragment StoreEntitySet="TelephoneNumberTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Titles">
+      <EntityTypeMapping TypeName="ArchdioceseModel.Title">
+        <MappingFragment StoreEntitySet="Titles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="ArchdioceseModel.UserGroup">
+        <MappingFragment StoreEntitySet="UserGroups">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="userGroupName" ColumnName="userGroupName" />
+          <ScalarProperty Name="permissionString" ColumnName="permissionString" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ArchdioceseModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userGroupID" ColumnName="userGroupID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChurchGroups">
+      <EntityTypeMapping TypeName="ArchdioceseModel.ChurchGroup">
+        <MappingFragment StoreEntitySet="ChurchGroups">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="ArchdioceseModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ArchdioceseModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ArchdioceseModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ArchdioceseModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ArchdioceseModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ArchdioceseModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ArchdioceseModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ArchdioceseModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteAddresses" FunctionName="ArchdioceseModel.Store.usp_DeleteAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteAddressTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteAddressTypes" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteChurchGroups" FunctionName="ArchdioceseModel.Store.usp_DeleteChurchGroups" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteCollections" FunctionName="ArchdioceseModel.Store.usp_DeleteCollections" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteCollectionTypes" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_DeleteEmailAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteEmailAddressTypes" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteGenders" FunctionName="ArchdioceseModel.Store.usp_DeleteGenders" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_DeleteMaritalStatuses" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteParishes" FunctionName="ArchdioceseModel.Store.usp_DeleteParishes" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteParishTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteParishTypes" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteParishUsers" FunctionName="ArchdioceseModel.Store.usp_DeleteParishUsers" />
+    <FunctionImportMapping FunctionImportName="usp_DeletePersons" FunctionName="ArchdioceseModel.Store.usp_DeletePersons" />
+    <FunctionImportMapping FunctionImportName="usp_DeletePersonTypes" FunctionName="ArchdioceseModel.Store.usp_DeletePersonTypes" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_DeleteTelephoneNumbers" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_DeleteTelephoneNumberTypes" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteTitles" FunctionName="ArchdioceseModel.Store.usp_DeleteTitles" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteUserGroups" FunctionName="ArchdioceseModel.Store.usp_DeleteUserGroups" />
+    <FunctionImportMapping FunctionImportName="usp_DeleteUsers" FunctionName="ArchdioceseModel.Store.usp_DeleteUsers" />
+    <FunctionImportMapping FunctionImportName="usp_DisableCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_DisableCollectionTypes" />
+    <FunctionImportMapping FunctionImportName="usp_EnableCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_EnableCollectionTypes" />
+    <FunctionImportMapping FunctionImportName="usp_GetAddresses" FunctionName="ArchdioceseModel.Store.usp_GetAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_GetAddressTypes" FunctionName="ArchdioceseModel.Store.usp_GetAddressTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetAddressTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetChurchGroups" FunctionName="ArchdioceseModel.Store.usp_GetChurchGroups">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetChurchGroups_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetCollections" FunctionName="ArchdioceseModel.Store.usp_GetCollections">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetCollections_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishUserID" ColumnName="parishUserID" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="collectionTypeID" ColumnName="collectionTypeID" />
+          <ScalarProperty Name="collectionDateTime" ColumnName="collectionDateTime" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_GetCollectionTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetCollectionTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="collectionTypeDescription" ColumnName="collectionTypeDescription" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_GetEmailAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_GetEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_GetEmailAddressTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetEmailAddressTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetGenders" FunctionName="ArchdioceseModel.Store.usp_GetGenders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetGenders_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_GetMaritalStatuses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetMaritalStatuses_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetParishes" FunctionName="ArchdioceseModel.Store.usp_GetParishes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishName" ColumnName="parishName" />
+          <ScalarProperty Name="parishTypeID" ColumnName="parishTypeID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetParishesByUserID" FunctionName="ArchdioceseModel.Store.usp_GetParishesByUserID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishesByUserID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishName" ColumnName="parishName" />
+          <ScalarProperty Name="parishTypeID" ColumnName="parishTypeID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetParishTypes" FunctionName="ArchdioceseModel.Store.usp_GetParishTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishTypeDescription" ColumnName="parishTypeDescription" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetParishUsers" FunctionName="ArchdioceseModel.Store.usp_GetParishUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetParishUsers_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="parishID" ColumnName="parishID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetPersons" FunctionName="ArchdioceseModel.Store.usp_GetPersons">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetPersons_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="titleID" ColumnName="titleID" />
+          <ScalarProperty Name="personTypeID" ColumnName="personTypeID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="genderID" ColumnName="genderID" />
+          <ScalarProperty Name="maritalStatusID" ColumnName="maritalStatusID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetPersonTypes" FunctionName="ArchdioceseModel.Store.usp_GetPersonTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetPersonTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_GetTelephoneNumbers" />
+    <FunctionImportMapping FunctionImportName="usp_GetTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_GetTelephoneNumberTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetTelephoneNumberTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetTitles" FunctionName="ArchdioceseModel.Store.usp_GetTitles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetTitles_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetUserGroups" FunctionName="ArchdioceseModel.Store.usp_GetUserGroups">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetUserGroups_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="userGroupName" ColumnName="userGroupName" />
+          <ScalarProperty Name="permissionString" ColumnName="permissionString" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetUsers" FunctionName="ArchdioceseModel.Store.usp_GetUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_GetUsers_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userGroupID" ColumnName="userGroupID" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_InsertAddresses" FunctionName="ArchdioceseModel.Store.usp_InsertAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_InsertAddressTypes" FunctionName="ArchdioceseModel.Store.usp_InsertAddressTypes" />
+    <FunctionImportMapping FunctionImportName="usp_InsertChurchGroups" FunctionName="ArchdioceseModel.Store.usp_InsertChurchGroups" />
+    <FunctionImportMapping FunctionImportName="usp_InsertCollections" FunctionName="ArchdioceseModel.Store.usp_InsertCollections" />
+    <FunctionImportMapping FunctionImportName="usp_InsertCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_InsertCollectionTypes" />
+    <FunctionImportMapping FunctionImportName="usp_InsertEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_InsertEmailAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_InsertEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_InsertEmailAddressTypes" />
+    <FunctionImportMapping FunctionImportName="usp_InsertGenders" FunctionName="ArchdioceseModel.Store.usp_InsertGenders" />
+    <FunctionImportMapping FunctionImportName="usp_InsertMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_InsertMaritalStatuses" />
+    <FunctionImportMapping FunctionImportName="usp_InsertParishes" FunctionName="ArchdioceseModel.Store.usp_InsertParishes" />
+    <FunctionImportMapping FunctionImportName="usp_InsertParishTypes" FunctionName="ArchdioceseModel.Store.usp_InsertParishTypes" />
+    <FunctionImportMapping FunctionImportName="usp_InsertParishUsers" FunctionName="ArchdioceseModel.Store.usp_InsertParishUsers" />
+    <FunctionImportMapping FunctionImportName="usp_InsertPersons" FunctionName="ArchdioceseModel.Store.usp_InsertPersons" />
+    <FunctionImportMapping FunctionImportName="usp_InsertPersonTypes" FunctionName="ArchdioceseModel.Store.usp_InsertPersonTypes" />
+    <FunctionImportMapping FunctionImportName="usp_InsertTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_InsertTelephoneNumbers" />
+    <FunctionImportMapping FunctionImportName="usp_InsertTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_InsertTelephoneNumberTypes" />
+    <FunctionImportMapping FunctionImportName="usp_InsertTitles" FunctionName="ArchdioceseModel.Store.usp_InsertTitles" />
+    <FunctionImportMapping FunctionImportName="usp_InsertUserGroups" FunctionName="ArchdioceseModel.Store.usp_InsertUserGroups" />
+    <FunctionImportMapping FunctionImportName="usp_InsertUsers" FunctionName="ArchdioceseModel.Store.usp_InsertUsers" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateAddresses" FunctionName="ArchdioceseModel.Store.usp_UpdateAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateAddressTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateAddressTypes" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateChurchGroups" FunctionName="ArchdioceseModel.Store.usp_UpdateChurchGroups" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateCollections" FunctionName="ArchdioceseModel.Store.usp_UpdateCollections" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateCollectionTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateCollectionTypes" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateEmailAddresses" FunctionName="ArchdioceseModel.Store.usp_UpdateEmailAddresses" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateEmailAddressTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateEmailAddressTypes" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateGenders" FunctionName="ArchdioceseModel.Store.usp_UpdateGenders" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateMaritalStatuses" FunctionName="ArchdioceseModel.Store.usp_UpdateMaritalStatuses" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateParishes" FunctionName="ArchdioceseModel.Store.usp_UpdateParishes" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateParishTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateParishTypes" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateParishUsers" FunctionName="ArchdioceseModel.Store.usp_UpdateParishUsers" />
+    <FunctionImportMapping FunctionImportName="usp_UpdatePersons" FunctionName="ArchdioceseModel.Store.usp_UpdatePersons" />
+    <FunctionImportMapping FunctionImportName="usp_UpdatePersonTypes" FunctionName="ArchdioceseModel.Store.usp_UpdatePersonTypes" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateTelephoneNumbers" FunctionName="ArchdioceseModel.Store.usp_UpdateTelephoneNumbers" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateTelephoneNumberTypes" FunctionName="ArchdioceseModel.Store.usp_UpdateTelephoneNumberTypes" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateTitles" FunctionName="ArchdioceseModel.Store.usp_UpdateTitles" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateUserGroups" FunctionName="ArchdioceseModel.Store.usp_UpdateUserGroups" />
+    <FunctionImportMapping FunctionImportName="usp_UpdateUsers" FunctionName="ArchdioceseModel.Store.usp_UpdateUsers" />
+    <FunctionImportMapping FunctionImportName="usp_VerifyUsernameAndPassword" FunctionName="ArchdioceseModel.Store.usp_VerifyUsernameAndPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ArchdioceseModel.usp_VerifyUsernameAndPassword_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="permissionString" ColumnName="permissionString" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

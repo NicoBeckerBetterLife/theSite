@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheSite.Tests", "TheSite.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{87A1BF63-1F8D-4675-8533-37CD30904A0A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLScripts", "SQLScripts", "{A5751723-F786-412B-9E3A-470A8A97F326}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Users\nico.becker\AppData\Local\Temp\Archdiocese_Update1.publish.sql = ..\..\..\Users\nico.becker\AppData\Local\Temp\Archdiocese_Update1.publish.sql
+		..\..\..\Users\nico.becker\AppData\Local\Temp\Archdiocese_Update2.publish.sql = ..\..\..\Users\nico.becker\AppData\Local\Temp\Archdiocese_Update2.publish.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
